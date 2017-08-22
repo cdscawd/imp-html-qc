@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巧口英语（Qooco） - 全球口语科技领导品牌</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="/images/qooco-icon-logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+    <meta name="theme-color" content="#2F3BA2">
+    <link rel="stylesheet" href="styles/twbs.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!--[if lte IE 10]>
+      <script src="/scripts/html5.js"></script>
+      <script src="/scripts/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body id="cooperation">
+    <div id="showbox" class="container" style="display:none;">
+      <div class="loginout-box">
+        <button type="button" class="btn btn-default loginout">退出账户</button>
+      </div>
+      <div class="jumbotron">
+        <h1>Qooco 官网相关数据</h1>
+        <p>北京塞瑞斯科技股份有限公司（巧口教育科技）致力于用科技方法轻松解决聋哑英语难题，让中国孩子开口说地道英语。公司业务涵盖幼儿、少儿及成人听力、口语训练，大量实验数据证明巧口的学习效果是传统方法的5倍。</p>
+      </div>
+      <div class="panel panel-default data-box">
+        <!-- Default panel contents -->
+        <div class="panel-heading">招商合作提交信息</div>
+        <!-- Table -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>姓名</th>
+              <th>电话</th>
+              <th>学校</th>
+              <th>城市</th>
+              <th>备注</th>
+              <th>创建时间</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+              <th scope="row">1</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+      <div aria-label="Page navigation">
+        <ul class="pagination pagination-lg">
+          <li class="Previous-btn other-btn">
+            <a href="javascript:void(0)" aria-label="Previous">
+              <span aria-hidden="true">«</span>
+            </a>
+          </li>
+          <!-- <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li> -->
+          <li class="Next-btn other-btn">
+            <a href="javascript:void(0)" aria-label="Next">
+              <span aria-hidden="true">»</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="login">
+      <div class="container">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">用户名</label>
+            <input type="username" class="form-control" id="username" placeholder="用户名">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">密码</label>
+            <input type="password" class="form-control" id="password" placeholder="密码">
+          </div>
+          <button type="button" class="btn btn-default login-btn">登陆</button>
+        </form>
+      </div>
+    </div>
+
+
+    <script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script>
+      var name = sessionStorage.getItem('name'), pass = sessionStorage.getItem('pass');
+
+      var customerName = '', page = 1, pageSize = 20, totalCount, totalPages, DB;
+      $(function(){
+        var getData = function(customerName, page, pageSize) {
+          $.get('http://open.api.qooco.com/qoocoPortalAPI/portal/getAllPartnerMessages?customerName='+customerName+'&page='+page+'&pageSize='+pageSize, function(res){
+            //有数据
+            if(res.msg == ''){
+              totalPages = res.data.totalPages
+              DB = res.data.parterMessageList;
+              var tempList='';
+              for(var i=0; i<=DB.length-1; i++){
+                tempList += '<tr><th scope="row">'+(i+1)+'</th><td>' + DB[i].customerName + '</td><td>' + DB[i].phoneNumber +'</td><td>' + DB[i].schoolName +'</td><td>' + DB[i].city +'</td><td>' + DB[i].message +'</td><td>' + DB[i].create_date +'</td><tr>'
+              }
+              $('.table tbody').html(tempList);
+              var paginationTemp='';
+              for(var i=1; i<=totalPages; i++){
+                paginationTemp +='<li><a href="javascript:void(0)">'+i+'</a></li>'
+              }
+              $('.pagination li:not(.other-btn)').remove();
+              $('.Previous-btn').after(paginationTemp);
+            }
+          })
+        }
+
+        if(name == 'qooco001' && pass == 'qoocoGuest.001'){
+          $('#showbox').show();
+          $('#login').hide();
+          getData(customerName, page, pageSize);
+        }
+
+        $('.pagination').delegate('li:not(.other-btn)', 'click', function(){
+          page = parseInt($(this).children().text(), 10);
+          getData(customerName, page, pageSize);
+        });
+
+        $('.other-btn').on('click', function(){
+          var code = $(this).find('span').text();
+          if(code == '«') {
+            page = (page == 1) ? 1 : (page - 1);
+            getData(customerName, page, pageSize);
+          } else {
+            page = (page == totalPages) ? totalPages : (page + 1);
+            getData(customerName, page, pageSize);
+          }
+        });
+
+        var login = function(){
+          var username = $('#username').val();
+          var password = $('#password').val();
+          if(username == 'qooco001' && password == 'qoocoGuest.001'){
+            sessionStorage.setItem('name', username);
+            sessionStorage.setItem('pass', password);
+            $('#showbox').show();
+            $('#login').hide();
+            getData(customerName, page, pageSize);
+          } else {
+            alert('用户名或密码错误请联系管理员')
+          }
+        }
+
+        $('.login-btn').on('click', function(){
+          login();
+        })
+
+        $('.loginout').on('click', function(){
+          sessionStorage.clear();
+          window.location.href = '/';
+        })
+      })
+    </script>
+  </body>
+</html>

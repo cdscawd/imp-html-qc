@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>巧口英语（Qooco） - 全球口语科技领导品牌</title>
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="/images/qooco-icon-logo.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+  <meta name="theme-color" content="#2F3BA2">
+  <link rel="stylesheet" href="styles/twbs.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <!--[if lte IE 10]>
+    <script src="/scripts/html5.js"></script>
+    <script src="/scripts/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body id="app">
+  <div class="container">
+    <div class="page-header">
+      <h1>Example page</h1>
+    </div>
+    
+    <div class="data-wrap">
+      <!-- Nav tabs -->
+      <button type="button" class="btn btn-primary add-btn" data-toggle="modal" data-target="#myModal">
+        创建新版本
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal</h4>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label for="Token" class="col-sm-2 control-label">Token：</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Token">
+                  </div>
+                </div>
+                <div class="form-group appType">
+                  <label class="col-sm-2 control-label">App名称：</label>
+                  <div class="col-sm-10">
+                    <select class="form-control">
+                      <option value="TALK">大声说英语</option>
+                      <option value="PETS">巧口萌宠</option>
+                      <option value="GAME">巧口竞技</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="appVersion" class="col-sm-2 control-label">版本号：</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="appVersion" placeholder="只写数字不加v">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="linkOfIOS" class="col-sm-2 control-label">IOS：</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="linkOfIOS" placeholder="Path">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="linkOfAndroid" class="col-sm-2 control-label">Android：</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="linkOfAndroid" placeholder="Path">
+                  </div>
+                </div>
+                <div class="form-group linkOfWinPC" style="display: none;" >
+                  <label for="linkOfWinPC" class="col-sm-2 control-label">Win：</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="linkOfWinPC" placeholder="Path">
+                  </div>
+                </div>
+
+                <div class="form-group linkOfVideo" >
+                  <label for="linkOfVideo" class="col-sm-2 control-label">视频ID：</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="linkOfVideo" placeholder="Path">
+                  </div>
+                </div>
+                <div class="form-group videoCut" >
+                  <label for="videoCut" class="col-sm-2 control-label">视频截图：</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="videoCut" placeholder="Path">
+                  </div>
+                </div>
+                <div class="form-group linkOfPDF" >
+                  <label for="linkOfPDF" class="col-sm-2 control-label">PDF链接：</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="linkOfPDF" placeholder="Path">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="linkDesc" class="col-sm-2 control-label">更新内容：</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" id="linkDesc" rows="5"></textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary send-btn" >Send</button>
+              <button type="button" class="btn btn-primary save-btn" style="display: none;">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#TALK" aria-controls="TALK" role="tab" data-toggle="tab">大声说英语</a></li>
+        <li role="presentation"><a href="#PETS" aria-controls="PETS" role="tab" data-toggle="tab">巧口萌宠</a></li>
+        <li role="presentation"><a href="#GAME" aria-controls="GAME" role="tab" data-toggle="tab">巧口竞技</a></li>
+      </ul>
+      
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="add">
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                  <form class="form-horizontal">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">App名称：</label>
+                      <div class="col-sm-10">
+                        <select class="form-control">
+                          <option>大声说英语</option>
+                          <option>巧口萌宠</option>
+                          <option>巧口竞技</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="linkOfIOS" class="col-sm-2 control-label">IOS：</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="linkOfIOS" placeholder="Path">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="linkOfAndroid" class="col-sm-2 control-label">Android：</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="linkOfAndroid" placeholder="Path">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="linkOfWinPC" class="col-sm-2 control-label">Win：</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="linkOfWinPC" placeholder="Path">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="linkOfWinPC" class="col-sm-2 control-label">更新内容：</label>
+                      <div class="col-sm-10">
+                        <textarea class="form-control" rows="5"></textarea>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane active" id="TALK">
+          <div class="panel-group" id="accordion-TALK" role="tablist" aria-multiselectable="true">
+
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="PETS">
+          <div class="panel-group" id="accordion-PETS" role="tablist" aria-multiselectable="true">
+              
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="GAME">
+          <div class="panel-group" id="accordion-GAME" role="tablist" aria-multiselectable="true">
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
+  <script>
+    var TALK = 'TALK',PETS = 'PETS',GAME = 'GAME',ALL = 'ALL';
+    $(document).ready(function(){
+      var loadDB = function(type){
+        var getDownloadLinkList = '//open.api.qooco.com/qoocoPortalAPI/publishMgr/getDownloadLinkList/';
+        switch(type){
+          case 'TALK':
+            getDownloadLinkList = getDownloadLinkList + TALK;
+            break;
+          case 'PETS':
+            getDownloadLinkList = getDownloadLinkList + PETS;
+            break;
+          case 'GAME':
+            getDownloadLinkList = getDownloadLinkList + GAME;
+            break;
+          default:
+            return
+        }
+        var box = $('.nav-tabs .active a').attr('href') + ' .panel-group';
+        $.get(getDownloadLinkList, function(res){
+          if(res.success){
+            var temp = '';
+            var data = res.data.downloadLinkList;
+            for(var i=0; i<data.length; i++){
+              if(type == 'PETS'){
+                temp += '<div class="panel panel-default"><div class="panel-heading" role="tab" id="heading-'+type+'-'+i+'"><h4 class="panel-title">'+
+                    '<a role="button" data-toggle="collapse" data-parent="#accordion-'+type+'" href="#collapse-'+type+'-'+i+'" aria-expanded="true" aria-controls="collapse-'+type+'-'+i+'">v '+ data[i].appVersion +
+                    '</a></h4></div><div id="collapse-'+type+'-'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-'+type+'-'+i+'"><div class="panel-body"><ul class="list-group">'+
+                    '<li class="list-group-item" data-id="' + data[i].id + '"><div><h4 class="setting"><span class="label label-primary">v ' + data[i].appVersion +
+                    '</span></h4></div><div class="panel panel-default"><div class="panel-heading">详细内容：</div><div class="panel-body">' + data[i].linkDesc + '</div>' +
+                    '</div></div><div class="panel panel-default"><div class="panel-heading">Apple iOS</div><div class="panel-body">' + data[i].linkOfIOS +
+                    '</div></div><div class="panel panel-default"><div class="panel-heading">Android</div><div class="panel-body">' + data[i].linkOfAndroid +
+                    '</div></div><div class="panel panel-default"><div class="panel-heading">视频ID</div><div class="panel-body">'+ data[i].linkOfVideo +
+                    '</div></div><div class="panel panel-default"><div class="panel-heading">视频截图</div><div class="panel-body">'+ data[i].videoCut +
+                    '</div></div><div class="panel panel-default"><div class="panel-heading">PDF链接</div><div class="panel-body">'+ data[i].linkOfPDF +
+                    '</div></div><div class="panel panel-default"><div class="panel-heading">创建时间</div><div class="panel-body">'+ data[i].createDate +
+                    '</div></div></li></div></div></div>';
+              } else {
+                temp += '<div class="panel panel-default"><div class="panel-heading" role="tab" id="heading-'+type+'-'+i+'"><h4 class="panel-title">'+
+                        '<a role="button" data-toggle="collapse" data-parent="#accordion-'+type+'" href="#collapse-'+type+'-'+i+'" aria-expanded="true" aria-controls="collapse-'+type+'-'+i+'">v '+ data[i].appVersion +
+                        '</a></h4></div><div id="collapse-'+type+'-'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-'+type+'-'+i+'"><div class="panel-body"><ul class="list-group">'+
+                        '<li class="list-group-item" data-id="' + data[i].id + '"><div><h4 class="setting"><span class="label label-primary">v ' + data[i].appVersion +
+                        '</span></h4></div><div class="panel panel-default"><div class="panel-heading">详细内容：</div><div class="panel-body">' + data[i].linkDesc + '</div>' +
+                        '</div></div><div class="panel panel-default"><div class="panel-heading">Apple iOS</div><div class="panel-body">' + data[i].linkOfIOS +
+                        '</div></div><div class="panel panel-default"><div class="panel-heading">Android</div><div class="panel-body">' + data[i].linkOfAndroid +
+                        '</div></div><div class="panel panel-default"><div class="panel-heading">视频ID</div><div class="panel-body">'+ data[i].linkOfVideo +
+                        '</div></div><div class="panel panel-default"><div class="panel-heading">视频截图</div><div class="panel-body">'+ data[i].videoCut +
+                        '</div></div><div class="panel panel-default"><div class="panel-heading">PDF链接</div><div class="panel-body">'+ data[i].linkOfPDF +
+                        '</div></div><div class="panel panel-default"><div class="panel-heading">创建时间</div><div class="panel-body">'+ data[i].createDate +
+                        '</div></div></li></div></div></div>';
+              }
+            }
+            var box = $('.nav-tabs .active a').attr('href') + ' .panel-group';
+            $(box).html(temp);
+            $('#collapse-'+type+'-0').addClass('in')
+            $(box).find('.list-group-item:first .setting').append('<button type="button" class="btn btn-danger btn-xs">编辑修改</button>')
+          }
+        })
+      } 
+      loadDB(TALK)
+
+      $('.nav-tabs li').on('click', function(){
+        var type = $(this).find('a').attr('aria-controls');
+        loadDB(type)
+      })
+
+      $('.add-btn').on('click', function(){
+        $('.send-btn').show();
+        $('.save-btn').hide();
+      })
+
+      $('select').on('change', function(){
+        var type = $(this).val();
+        if(type == 'PETS'){
+          $('.linkOfWinPC').show();
+        } else {
+          $('.linkOfWinPC').hide();
+        }
+      })
+
+      var DB =  function(formData){
+        var Token = $('#Token').val().trim();
+        var appType = $('.appType select').val();
+        var linkOfIOS = $('#linkOfIOS').val().trim();
+        var appVersion = $('#appVersion').val().trim();
+        var linkOfAndroid = $('#linkOfAndroid').val().trim();
+        var linkOfWinPC = $('#linkOfWinPC').val().trim();
+        var linkOfVideo = $('#linkOfVideo').val().trim();
+        var videoCut = $('#videoCut').val().trim();
+        var linkOfPDF = $('#linkOfPDF').val().trim();
+        var linkDesc = $('#linkDesc').val().trim();
+        if(Token && linkOfIOS && appVersion && linkOfIOS && linkOfAndroid){
+          $.ajax({
+            url: '//open.api.qooco.com/qoocoPortalAPI/publishMgr/addDownloadLink',
+            type: 'post',
+            contentType: "application/json;charset=UTF-8",
+            headers: {token: Token},
+            data: formData,
+            success: function(res){
+              if(res.success){
+                $('#myModal').modal('hide');
+                $('form')[0].reset();
+              } else {
+                alert(res.msg)
+              }
+            },
+            error: function(err){
+              alert(err)
+            }
+          })
+        } else {
+          alert('不容不完整，提交失败。');
+        }
+      }
+
+      $('.send-btn').on('click', function(){
+        var Token = $('#Token').val().trim();
+        var appType = $('.appType select').val();
+        var linkOfIOS = $('#linkOfIOS').val().trim();
+        var appVersion = $('#appVersion').val().trim();
+        var linkOfAndroid = $('#linkOfAndroid').val().trim();
+        var linkOfWinPC = $('#linkOfWinPC').val().trim();
+        var linkOfVideo = $('#linkOfVideo').val().trim();
+        var videoCut = $('#videoCut').val().trim();
+        var linkOfPDF = $('#linkOfPDF').val().trim();
+        var linkDesc = $('#linkDesc').val().trim();
+        var formData = JSON.stringify({
+          "appType": appType,
+          "linkOfIOS": linkOfIOS,
+          "appVersion": appVersion,
+          "linkOfIOS": linkOfIOS,
+          "linkOfAndroid": linkOfAndroid,
+          "linkOfWinPC": linkOfWinPC,
+          "linkOfVideo": linkOfVideo,
+          "videoCut": videoCut,
+          "linkOfPDF": linkOfPDF,
+          "linkDesc": linkDesc
+        });
+        if(Token && linkOfIOS && appVersion && linkOfIOS && linkOfAndroid){
+          $.ajax({
+            url: '//open.api.qooco.com/qoocoPortalAPI/publishMgr/addDownloadLink',
+            type: 'post',
+            contentType: "application/json;charset=UTF-8",
+            headers: {token: Token},
+            data: formData,
+            success: function(res){
+              if(res.success){
+                $('#myModal').modal('hide');
+                $('form')[0].reset();
+                loadDB(appType)
+              } else {
+                alert(res.msg)
+              }
+            }
+          })
+        } else {
+          alert('不容不完整，提交失败。');
+        }
+      })
+
+      $('.save-btn').on('click', function(){
+        var id = $($('.nav-tabs .active a').attr('href') + ' .list-group-item:first').attr('data-id');
+        var Token = $('#Token').val().trim();
+        var appType = $('.appType select').val();
+        var linkOfIOS = $('#linkOfIOS').val().trim();
+        var appVersion = $('#appVersion').val().trim();
+        var linkOfAndroid = $('#linkOfAndroid').val().trim();
+        var linkOfWinPC = $('#linkOfWinPC').val().trim();
+        var linkOfVideo = $('#linkOfVideo').val().trim();
+        var videoCut = $('#videoCut').val().trim();
+        var linkOfPDF = $('#linkOfPDF').val().trim();
+        var linkDesc = $('#linkDesc').val().trim();
+        var formData = JSON.stringify({
+          "id": id,
+          "appType": appType,
+          "linkOfIOS": linkOfIOS,
+          "appVersion": appVersion,
+          "linkOfIOS": linkOfIOS,
+          "linkOfAndroid": linkOfAndroid,
+          "linkOfWinPC": linkOfWinPC,
+          "linkOfVideo": linkOfVideo,
+          "videoCut": videoCut,
+          "linkOfPDF": linkOfPDF,
+          "linkDesc": linkDesc
+        });
+        if(Token && linkOfIOS && appVersion && linkOfIOS && linkOfAndroid){
+          $.ajax({
+            url: '//open.api.qooco.com/qoocoPortalAPI/publishMgr/addDownloadLink',
+            type: 'post',
+            contentType: "application/json;charset=UTF-8",
+            headers: {token: Token},
+            data: formData,
+            success: function(res){
+              if(res.success){
+                $('#myModal').modal('hide');
+                $('form')[0].reset();
+                loadDB(appType)
+              } else {
+                alert(res.msg)
+              }
+            }
+          })
+        } else {
+          alert('不容不完整，提交失败。');
+        }
+      })
+
+      $('body').on('click','.setting button',function(){
+        $('form')[0].reset()
+        $('.send-btn').hide();
+        $('.save-btn').show();
+        $('#myModal').modal('show');
+        var id = $(this).parents('.list-group-item').attr('data-id');
+        $.get('//open.api.qooco.com/qoocoPortalAPI/publishMgr/getDownloadLinkById/' + id, function(res){
+          if(res.success){
+            var data = res.data.downloadLink;
+            $('.appType select').val(data.appType);
+            $('#appVersion').val(data.appVersion);
+            $('#linkOfIOS').val(data.linkOfIOS);
+            $('#linkOfAndroid').val(data.linkOfAndroid);
+            $('#linkOfWinPC').val(data.linkOfWinPC);
+            $('#linkOfVideo').val(data.linkOfVideo);
+            $('#videoCut').val(data.videoCut);
+            $('#linkOfPDF').val(data.linkOfPDF);
+            $('#linkDesc').val(data.linkDesc);
+          }
+        })
+      })
+
+      //$('#myModal').modal({backdrop: 'static', keyboard: false});
+      $('#myModal').on('hide.bs.modal', function () {
+        $('#myModal form')[0].reset();
+      })
+    })
+  </script>
+</body>
+</html>
